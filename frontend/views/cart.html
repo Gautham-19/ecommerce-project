@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Eco Cycle Store</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="home.html" class="logo">
+                <i class="fas fa-leaf"></i>
+                Eco Cycle Store
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands and more">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="home.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="products.html" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>Products</span>
+                </a>
+                <a href="cart.html" class="nav-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="orders.html" class="nav-link">
+                    <i class="fas fa-box"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="users.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-nav">
+            <a href="home.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="products.html" class="nav-link">
+                <i class="fas fa-th-large"></i>
+                <span>Products</span>
+            </a>
+            <a href="cart.html" class="nav-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+            </a>
+            <a href="orders.html" class="nav-link">
+                <i class="fas fa-box"></i>
+                <span>Orders</span>
+            </a>
+            <a href="users.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Account</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Cart Page -->
+    <div class="cart-page">
+        <div class="container">
+            <div class="cart-container" id="cart-container">
+                <!-- Cart Items Section -->
+                <div class="cart-items">
+                    <div class="cart-header">
+                        <h2 class="cart-title">Shopping Cart (<span id="cart-count-display">0</span> items)</h2>
+                    </div>
+                    <div class="cart-list" id="cart-items">
+                        <!-- Cart items will be dynamically added here -->
+                    </div>
+                </div>
+
+                <!-- Cart Summary Section -->
+                <div class="cart-summary">
+                    <h3 class="summary-title">Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="shipping">$5.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total-price">$0.00</span>
+                    </div>
+                    <button id="checkout-btn" class="checkout-btn">Proceed to Checkout</button>
+                </div>
+            </div>
+
+            <!-- Empty Cart Message -->
+            <div class="empty-cart" id="empty-cart" style="display: none;">
+                <div class="empty-cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h2 class="empty-cart-message">Your cart is empty</h2>
+                <p>Looks like you haven't added anything to your cart yet.</p>
+                <a href="products.html" class="continue-shopping-btn">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">About Us</h3>
+                    <p>Your one-stop shop for eco-friendly products that help reduce environmental impact.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Customer Service</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Contact Us</a>
+                        <a href="#" class="footer-link">FAQs</a>
+                        <a href="#" class="footer-link">Returns & Refunds</a>
+                        <a href="#" class="footer-link">Shipping Policy</a>
+                        <a href="#" class="footer-link">Terms & Conditions</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="home.html" class="footer-link">Home</a>
+                        <a href="products.html" class="footer-link">Products</a>
+                        <a href="cart.html" class="footer-link">Cart</a>
+                        <a href="orders.html" class="footer-link">Orders</a>
+                        <a href="users.html" class="footer-link">Account</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link"><i class="fas fa-map-marker-alt"></i> UVCE, K.R Circle</a>
+                        <a href="#" class="footer-link"><i class="fas fa-phone"></i>  +91-7899247701, +91-8951233445</a>
+                        <a href="#" class="footer-link"><i class="fas fa-envelope"></i> sphemads@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eco Cycle Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/js/cart.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+
+        // Enhanced cart display
+        function displayCartItems(cartItems) {
+            const cartList = document.getElementById("cart-items");
+            const cartCountDisplay = document.getElementById("cart-count-display");
+            const subtotalElement = document.getElementById("subtotal");
+            const taxElement = document.getElementById("tax");
+            const totalPriceElement = document.getElementById("total-price");
+            const cartContainer = document.getElementById("cart-container");
+            const emptyCart = document.getElementById("empty-cart");
+            
+            cartList.innerHTML = "";
+            let subtotal = 0;
+
+            if (cartItems.length === 0) {
+                cartContainer.style.display = "none";
+                emptyCart.style.display = "block";
+                return;
+            }
+
+            cartContainer.style.display = "grid";
+            emptyCart.style.display = "none";
+            cartCountDisplay.textContent = cartItems.length;
+
+            cartItems.forEach((item) => {
+                const price = parseFloat(item.Price);
+                const itemTotal = price * item.Quantity;
+                subtotal += itemTotal;
+
+                const cartItem = document.createElement("div");
+                cartItem.className = "cart-item";
+                cartItem.innerHTML = `
+                    <div class="cart-item-details">
+                        <h3 class="cart-item-name">${item.Name}</h3>
+                        <div class="cart-item-price">
+                            <span class="current-price">$${price.toFixed(2)}</span>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateCartItem(${item.Cart_ID}, ${item.Product_ID}, ${Math.max(1, item.Quantity - 1)})">-</button>
+                                <input type="text" class="quantity-input" value="${item.Quantity}" readonly>
+                                <button class="quantity-btn" onclick="updateCartItem(${item.Cart_ID}, ${item.Product_ID}, ${item.Quantity + 1})">+</button>
+                            </div>
+                            <button class="remove-btn" onclick="removeCartItem(${item.Cart_ID}, ${item.Product_ID})">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-total">$${itemTotal.toFixed(2)}</div>
+                `;
+
+                cartList.appendChild(cartItem);
+            });
+
+            // Calculate tax and total
+            const tax = subtotal * 0.08; // 8% tax
+            const shipping = 5.00; // Fixed shipping cost
+            const total = subtotal + tax + shipping;
+
+            // Update summary
+            subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+            taxElement.textContent = `$${tax.toFixed(2)}`;
+            totalPriceElement.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Override the original function
+        window.fetchCartItems = function(userId) {
+            fetch(`http://localhost:5000/api/carts/user/${userId}`)
+                .then((response) => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then((data) => displayCartItems(data))
+                .catch((error) => {
+                    console.error("Error fetching cart items:", error);
+                    document.getElementById("cart-items").innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Error loading cart items. Please try again later.</p>
+                        </div>`;
+                });
+        }
+
+        // Update cart count in header
+        function updateCartCount() {
+            fetch('http://localhost:5000/api/carts/user/1')
+                .then(response => response.json())
+                .then(data => {
+                    const cartCount = document.querySelectorAll('.cart-count');
+                    cartCount.forEach(count => {
+                        count.textContent = data.length || 0;
+                    });
+                })
+                .catch(error => console.error('Error fetching cart count:', error));
+        }
+
+        // Call on page load
+        updateCartCount();
+        
+        // Initialize cart
+        document.addEventListener("DOMContentLoaded", () => {
+            const userId = 1; // Replace with actual logged-in user ID
+            fetchCartItems(userId);
+
+            document.getElementById("checkout-btn").addEventListener("click", () => {
+                const totalPrice = parseFloat(document.getElementById("total-price").textContent.replace('$', ''));
+                if (totalPrice <= 5.00) { // If only shipping cost
+                    alert("Your cart is empty!");
+                    return;
+                }
+                window.location.href = "checkout.html";
+            });
+        });
+    </script>
+</body>
+</html>
+

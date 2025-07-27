@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Eco Cycle Store</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="home.html" class="logo">
+                <i class="fas fa-leaf"></i>
+                Eco Cycle Store
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands and more" id="search-input">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="home.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="products.html" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>Products</span>
+                </a>
+                <a href="cart.html" class="nav-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="orders.html" class="nav-link">
+                    <i class="fas fa-box"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="users.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-nav">
+            <a href="home.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="products.html" class="nav-link">
+                <i class="fas fa-th-large"></i>
+                <span>Products</span>
+            </a>
+            <a href="cart.html" class="nav-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+            </a>
+            <a href="orders.html" class="nav-link">
+                <i class="fas fa-box"></i>
+                <span>Orders</span>
+            </a>
+            <a href="users.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Account</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Products Page -->
+    <div class="products-page">
+        <div class="container">
+            <div class="products-container">
+                <!-- Filters Sidebar -->
+                <div class="filters-sidebar">
+                    <div class="filter-section">
+                        <h3 class="filter-title">Categories</h3>
+                        <div class="filter-list" id="category-filters">
+                            <!-- Categories will be loaded dynamically -->
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h3 class="filter-title">Price Range</h3>
+                        <div class="price-range">
+                            <input type="number" class="price-input" id="min-price" placeholder="Min">
+                            <span>to</span>
+                            <input type="number" class="price-input" id="max-price" placeholder="Max">
+                            <button class="apply-btn" id="apply-price">Apply</button>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h3 class="filter-title">Availability</h3>
+                        <div class="filter-list">
+                            <label class="filter-item">
+                                <input type="checkbox" class="filter-checkbox" id="in-stock">
+                                <span>In Stock</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Content -->
+                <div class="products-content">
+                    <div class="products-header">
+                        <div class="products-count" id="products-count">Showing 0 products</div>
+                        <div class="sort-dropdown">
+                            <button class="sort-btn" id="sort-btn">
+                                <span>Sort By: Featured</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="sort-options" id="sort-options">
+                                <div class="sort-option active" data-sort="featured">Featured</div>
+                                <div class="sort-option" data-sort="price-low">Price: Low to High</div>
+                                <div class="sort-option" data-sort="price-high">Price: High to Low</div>
+                                <div class="sort-option" data-sort="newest">Newest First</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="product-grid" id="products-list">
+                        <!-- Products will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="add-product-modal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+        <div class="modal-content" style="background-color: white; margin: 10% auto; padding: 20px; border-radius: 8px; width: 80%; max-width: 500px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <span class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+            <h2 style="margin-bottom: 20px;">Add New Product</h2>
+            <form id="product-form">
+                <div class="form-group">
+                    <label class="form-label">Product Name</label>
+                    <input type="text" id="product-name" class="form-control" placeholder="Product Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price</label>
+                    <input type="number" id="product-price" class="form-control" placeholder="Price" step="0.01" min="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select id="product-category" class="form-control">
+                        <!-- Categories will be loaded dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" id="product-quantity" class="form-control" placeholder="Quantity" min="0" required>
+                </div>
+                <button type="submit" class="checkout-btn" style="margin-top: 20px;">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">About Us</h3>
+                    <p>Your one-stop shop for eco-friendly products that help reduce environmental impact.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Customer Service</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Contact Us</a>
+                        <a href="#" class="footer-link">FAQs</a>
+                        <a href="#" class="footer-link">Returns & Refunds</a>
+                        <a href="#" class="footer-link">Shipping Policy</a>
+                        <a href="#" class="footer-link">Terms & Conditions</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="home.html" class="footer-link">Home</a>
+                        <a href="products.html" class="footer-link">Products</a>
+                        <a href="cart.html" class="footer-link">Cart</a>
+                        <a href="orders.html" class="footer-link">Orders</a>
+                        <a href="users.html" class="footer-link">Account</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link"><i class="fas fa-map-marker-alt"></i> UVCE, K.R Circle</a>
+                        <a href="#" class="footer-link"><i class="fas fa-phone"></i>  +91-7899247701, +91-8951233445</a>
+                        <a href="#" class="footer-link"><i class="fas fa-envelope"></i>sphemads@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eco Cycle Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/js/products.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+
+        // Sort dropdown toggle
+        document.getElementById('sort-btn').addEventListener('click', function() {
+            document.getElementById('sort-options').classList.toggle('active');
+        });
+
+        // Sort options functionality
+        document.querySelectorAll('.sort-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Update active class
+                document.querySelectorAll('.sort-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update button text
+                document.querySelector('#sort-btn span').textContent = 'Sort By: ' + this.textContent;
+                
+                // Hide dropdown
+                document.getElementById('sort-options').classList.remove('active');
+                
+                // Apply sorting
+                const sortType = this.getAttribute('data-sort');
+                sortProducts(sortType);
+            });
+        });
+
+        // Add Product Button
+        const addProductBtn = document.createElement('button');
+        addProductBtn.className = 'checkout-btn';
+        addProductBtn.style.marginTop = '20px';
+        addProductBtn.textContent = 'Add New Product';
+        addProductBtn.addEventListener('click', function() {
+            document.getElementById('add-product-modal').style.display = 'block';
+        });
+        document.querySelector('.products-content').appendChild(addProductBtn);
+
+        // Close modal
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('add-product-modal').style.display = 'none';
+        });
+
+        // Enhanced product display
+        function displayProducts(products) {
+            const productsContainer = document.querySelector('.product-grid');
+            productsContainer.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+
+                productCard.innerHTML = `
+                    <div class="product-info">
+                        <span class="product-brand">Eco Cycle</span>
+                        <h3 class="product-name">${product.Name}</h3>
+                        <div class="product-price">
+                            <span class="current-price">$${product.Price}</span>
+                            <span class="original-price">$${(product.Price * 1.1).toFixed(2)}</span>
+                            <span class="discount">10% off</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="rating-badge">4.2 <i class="fas fa-star"></i></span>
+                            <span class="rating-count">(24)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" onclick="addToCart(${product.Product_ID})">Add to Cart</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                `;
+
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        // Fetch and display categories
+        function fetchCategories() {
+            fetch("http://localhost:5000/api/categories")
+                .then((response) => response.json())
+                .then((data) => {
+                    const categorySelect = document.getElementById("product-category");
+                    const categoryFilters = document.getElementById("category-filters");
+                    
+                    categorySelect.innerHTML = '<option value="">Select Category</option>';
+                    categoryFilters.innerHTML = '';
+
+                    data.forEach((category) => {
+                        // For dropdown
+                        const option = document.createElement("option");
+                        option.value = category.Category_ID;
+                        option.textContent = category.Category_Name;
+                        categorySelect.appendChild(option);
+                        
+                        // For filters
+                        const filterItem = document.createElement("label");
+                        filterItem.className = "filter-item";
+                        filterItem.innerHTML = `
+                            <input type="checkbox" class="filter-checkbox" data-category="${category.Category_ID}">
+                            <span>${category.Category_Name}</span>
+                        `;
+                        categoryFilters.appendChild(filterItem);
+                    });
+                    
+                    // Add event listeners to category filters
+                    document.querySelectorAll('#category-filters .filter-checkbox').forEach(checkbox => {
+                        checkbox.addEventListener('change', filterProducts);
+                    });
+                })
+                .catch((error) => console.error("Error fetching categories:", error));
+        }
+
+        // Filter products
+        function filterProducts() {
+            const selectedCategories = Array.from(document.querySelectorAll('#category-filters .filter-checkbox:checked'))
+                .map(checkbox => checkbox.getAttribute('data-category'));
+            
+            const minPrice = document.getElementById('min-price').value;
+            const maxPrice = document.getElementById('max-price').value;
+            const inStock = document.getElementById('in-stock').checked;
+            
+            fetch("http://localhost:5000/api/products")
+                .then((response) => response.json())
+                .then((data) => {
+                    let filteredProducts = data;
+                    
+                    // Filter by category
+                    if (selectedCategories.length > 0) {
+                        filteredProducts = filteredProducts.filter(product => 
+                            selectedCategories.includes(String(product.Category_ID))
+                        );
+                    }
+                    
+                    // Filter by price
+                    if (minPrice) {
+                        filteredProducts = filteredProducts.filter(product => 
+                            parseFloat(product.Price) >= parseFloat(minPrice)
+                        );
+                    }
+                    
+                    if (maxPrice) {
+                        filteredProducts = filteredProducts.filter(product => 
+                            parseFloat(product.Price) <= parseFloat(maxPrice)
+                        );
+                    }
+                    
+                    // Filter by stock
+                    if (inStock) {
+                        filteredProducts = filteredProducts.filter(product => 
+                            product.Quantity > 0
+                        );
+                    }
+                    
+                    displayProducts(filteredProducts);
+                })
+                .catch((error) => console.error("Error filtering products:", error));
+        }
+
+        // Sort products
+        function sortProducts(sortType) {
+            fetch("http://localhost:5000/api/products")
+                .then((response) => response.json())
+                .then((data) => {
+                    let sortedProducts = [...data];
+                    
+                    switch(sortType) {
+                        case 'price-low':
+                            sortedProducts.sort((a, b) => parseFloat(a.Price) - parseFloat(b.Price));
+                            break;
+                        case 'price-high':
+                            sortedProducts.sort((a, b) => parseFloat(b.Price) - parseFloat(a.Price));
+                            break;
+                        case 'newest':
+                            // For demo, we'll just reverse the array
+                            sortedProducts.reverse();
+                            break;
+                        default:
+                            // 'featured' - no specific sorting
+                            break;
+                    }
+                    
+                    displayProducts(sortedProducts);
+                })
+                .catch((error) => console.error("Error sorting products:", error));
+        }
+
+        // Apply price filter
+        document.getElementById('apply-price').addEventListener('click', filterProducts);
+
+        // Search functionality
+        document.getElementById('search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm.length > 2) {
+                fetch("http://localhost:5000/api/products")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const searchResults = data.filter(product => 
+                            product.Name.toLowerCase().includes(searchTerm)
+                        );
+                        displayProducts(searchResults);
+                    })
+                    .catch((error) => console.error("Error searching products:", error));
+            } else if (searchTerm.length === 0) {
+                fetchProducts();
+            }
+        });
+
+        // Initialize
+        fetchProducts();
+        fetchCategories();
+        
+        // Update cart count
+        function updateCartCount() {
+            fetch('http://localhost:5000/api/carts/user/1')
+                .then(response => response.json())
+                .then(data => {
+                    const cartCount = document.querySelectorAll('.cart-count');
+                    cartCount.forEach(count => {
+                        count.textContent = data.length || 0;
+                    });
+                })
+                .catch(error => console.error('Error fetching cart count:', error));
+        }
+        
+        updateCartCount();
+    </script>
+</body>
+</html>
+

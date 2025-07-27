@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - Eco Cycle Store</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="home.html" class="logo">
+                <i class="fas fa-leaf"></i>
+                Eco Cycle Store
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands and more">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="home.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="products.html" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>Products</span>
+                </a>
+                <a href="cart.html" class="nav-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="orders.html" class="nav-link">
+                    <i class="fas fa-box"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="users.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-nav">
+            <a href="home.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="products.html" class="nav-link">
+                <i class="fas fa-th-large"></i>
+                <span>Products</span>
+            </a>
+            <a href="cart.html" class="nav-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+            </a>
+            <a href="orders.html" class="nav-link">
+                <i class="fas fa-box"></i>
+                <span>Orders</span>
+            </a>
+            <a href="users.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Account</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Orders Page -->
+    <div class="orders-page">
+        <div class="container">
+            <div class="orders-container">
+                <div class="orders-header">
+                    <h2 class="orders-title">My Orders</h2>
+                </div>
+                <div class="orders-list" id="orders-list">
+                    <!-- Orders will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Empty Orders Message -->
+            <div class="empty-orders" id="empty-orders" style="display: none;">
+                <div class="empty-orders-icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <h2 class="empty-orders-message">No orders yet</h2>
+                <p>Looks like you haven't placed any orders yet.</p>
+                <a href="products.html" class="continue-shopping-btn">Start Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">About Us</h3>
+                    <p>Your one-stop shop for eco-friendly products that help reduce environmental impact.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Customer Service</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Contact Us</a>
+                        <a href="#" class="footer-link">FAQs</a>
+                        <a href="#" class="footer-link">Returns & Refunds</a>
+                        <a href="#" class="footer-link">Shipping Policy</a>
+                        <a href="#" class="footer-link">Terms & Conditions</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="home.html" class="footer-link">Home</a>
+                        <a href="products.html" class="footer-link">Products</a>
+                        <a href="cart.html" class="footer-link">Cart</a>
+                        <a href="orders.html" class="footer-link">Orders</a>
+                        <a href="users.html" class="footer-link">Account</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link"><i class="fas fa-map-marker-alt"></i> UVCE, K.R Circle</a>
+                        <a href="#" class="footer-link"><i class="fas fa-phone"></i> +91-7899247701, +91-8951233445</a>
+                        <a href="#" class="footer-link"><i class="fas fa-envelope"></i>sphemads@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eco Cycle Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/js/orders.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+
+        // Enhanced orders display
+        function displayOrders(orders) {
+            const ordersList = document.getElementById("orders-list");
+            const emptyOrders = document.getElementById("empty-orders");
+            
+            ordersList.innerHTML = "";
+
+            if (!orders || !orders.length) {
+                document.querySelector('.orders-container').style.display = "none";
+                emptyOrders.style.display = "block";
+                return;
+            }
+
+            document.querySelector('.orders-container').style.display = "block";
+            emptyOrders.style.display = "none";
+
+            orders.forEach((order) => {
+                const orderCard = document.createElement("div");
+                orderCard.className = "order-card";
+
+                const orderDate = new Date(order.OrderDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                const estimatedDate = order.Estimated_Date ? new Date(order.Estimated_Date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) : "Not available";
+                
+                const totalAmount = parseFloat(order.Total_Amount);
+                const status = order.Status || "Pending";
+                
+                // Determine status class
+                let statusClass = "";
+                switch(status.toLowerCase()) {
+                    case "pending":
+                        statusClass = "status-pending";
+                        break;
+                    case "confirmed":
+                        statusClass = "status-confirmed";
+                        break;
+                    case "shipped":
+                        statusClass = "status-shipped";
+                        break;
+                    case "delivered":
+                        statusClass = "status-delivered";
+                        break;
+                    default:
+                        statusClass = "status-pending";
+                }
+
+                // Show confirm button only for pending orders
+                const showConfirmButton = status.toLowerCase() === "pending";
+
+                orderCard.innerHTML = `
+                    <div class="order-header">
+                        <div class="order-id">Order #${order.Order_ID}</div>
+                        <div class="order-date">${orderDate}</div>
+                    </div>
+                    <div class="order-details">
+                        <img src="../public/images/products/order.avif" alt="Order" class="order-image">
+                        <div class="order-info">
+                            <div class="order-products">Order #${order.Order_ID}</div>
+                            <div class="order-total">$${totalAmount.toFixed(2)}</div>
+                            <span class="order-status ${statusClass}">${status}</span>
+                        </div>
+                    </div>
+                    <div class="order-delivery">
+                        <i class="fas fa-truck"></i> Estimated Delivery: ${estimatedDate}
+                    </div>
+                    <div class="order-actions">
+                        <button class="order-action-btn track-btn">
+                            <i class="fas fa-map-marker-alt"></i> Track Order
+                        </button>
+                        ${
+                            showConfirmButton
+                                ? `<button onclick="confirmOrder(${order.Order_ID})" class="order-action-btn confirm-btn">
+                                    <i class="fas fa-check"></i> Confirm Order
+                                </button>`
+                                : ""
+                        }
+                        <button class="order-action-btn cancel-btn">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                `;
+
+                ordersList.appendChild(orderCard);
+            });
+        }
+
+        // Override the original function
+        window.fetchOrders = function(userId) {
+            fetch(`http://localhost:5000/api/orders/user/${userId}`)
+                .then((response) => response.json())
+                .then((orders) => displayOrders(orders))
+                .catch((error) => {
+                    console.error("Error:", error);
+                    document.getElementById("orders-list").innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Error loading orders. Please try again later.</p>
+                        </div>`;
+                });
+        }
+
+        // Enhanced confirm order function
+        window.confirmOrder = function(orderId) {
+            if (!confirm("Are you sure you want to confirm this order?")) {
+                return;
+            }
+
+            // Show loading state
+            const confirmBtn = event.target;
+            const originalText = confirmBtn.innerHTML;
+            confirmBtn.disabled = true;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Confirming...';
+
+            fetch(`http://localhost:5000/api/orders/${orderId}/confirm`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.json();
+                })
+                .then((data) => {
+                    alert("Order confirmed successfully!");
+                    fetchOrders(1); // Refresh orders list
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("Failed to confirm order. Please try again.");
+                    
+                    // Reset button state
+                    confirmBtn.disabled = false;
+                    confirmBtn.innerHTML = originalText;
+                });
+        }
+
+        // Update cart count in header
+        function updateCartCount() {
+            fetch('http://localhost:5000/api/carts/user/1')
+                .then(response => response.json())
+                .then(data => {
+                    const cartCount = document.querySelectorAll('.cart-count');
+                    cartCount.forEach(count => {
+                        count.textContent = data.length || 0;
+                    });
+                })
+                .catch(error => console.error('Error fetching cart count:', error));
+        }
+
+        // Call on page load
+        updateCartCount();
+        
+        // Initialize orders
+        document.addEventListener("DOMContentLoaded", () => {
+            const userId = 1; // Replace with actual logged-in user ID
+            fetchOrders(userId);
+        });
+    </script>
+</body>
+</html>
+

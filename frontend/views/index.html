@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Eco Cycle Store</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .landing-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .landing-logo {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .landing-logo i {
+            animation: spin 20s linear infinite;
+        }
+
+        .landing-title {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .landing-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+        }
+
+        .click-hint {
+            font-size: 1.2em;
+            opacity: 0;
+            position: absolute;
+            bottom: 20px; /* Changed from 50px to 20px */
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fadeInUp 1s ease-out 0.9s forwards, bounce 2s ease-in-out infinite;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .click-hint i {
+            animation: slideRight 1s ease-in-out infinite;
+        }
+
+        @keyframes slideRight {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        .created-by {
+            margin-top: 20px;
+            font-size: 1.2em;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.2s forwards;
+        }
+
+        .hover-effect {
+            transition: all 0.3s ease;
+        }
+
+        .landing-container:hover .hover-effect {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .landing-logo {
+                font-size: 3em;
+            }
+            
+            .landing-title {
+                font-size: 2.5em;
+            }
+            
+            .landing-subtitle {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container" onclick="window.location.href='home.html'">
+        <div class="particles">
+            <!-- Particles will be added by JavaScript -->
+        </div>
+        <div class="landing-content">
+            <div class="landing-logo hover-effect">
+                <i class="fas fa-leaf"></i>
+                <span>Eco Cycle Store</span>
+            </div>
+            <h1 class="landing-title hover-effect">Welcome to Our Store</h1>
+            <p class="landing-subtitle">Your One-Stop Shop for Eco-Friendly Products</p>
+            <div class="created-by">
+                <p>Created By: Gautham Sutrave (U25UV22T006011) <br>
+                & <br> Hema D S (U25UV22T006015)</p>
+            </div>
+        </div>
+        <div class="click-hint">Click anywhere to enter <i class="fas fa-arrow-right"></i></div>
+    </div>
+
+    <script>
+        // Add particles
+        const particles = document.querySelector('.particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.opacity = Math.random();
+            particles.appendChild(particle);
+        }
+
+        // Smooth transition to home page
+        document.querySelector('.landing-container').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 500);
+        });
+
+        // Add fade-in effect on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
+
